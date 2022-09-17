@@ -6,7 +6,7 @@ import openai
 #load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-completion = openai.completion()
+completion = openai.Completion()
 
 start_sequence = "\nQuackhead:"
 restart_sequence = "\nHuman:"
