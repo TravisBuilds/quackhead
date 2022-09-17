@@ -1,9 +1,9 @@
-from devenv import load_dotenv
-from random import choice 
+#from devenv import load_dotenv
+#from random import choice 
 import os
 import openai
 
-load_dotenv()
+#load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 completion = openai.completion()

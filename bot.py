@@ -1,10 +1,10 @@
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from quackHeadBill import convo, append_to_convo
+import os 
 PORT = int(os.environ.get('PORT', '8443'))
 
-with open('token.txt', 'r') as f:
-    TOKEN = str(f.read())
+TOKEN = os.getenv("TELEGRAM_KEY")
 
 session = {}
 
@@ -16,16 +16,12 @@ logger = logging.getLogger(__name__)
 
 
 def start(update, context):
-    update.message.reply_text("Hello! Welcome to TriBot")
+    update.message.reply_text("Hello! Welcome to Highstreet")
 
 
 def help(update, context):
     update.message.reply_text("""
-    The Following commands are available:
-    /start -> Welcome to Trigan
-    /help ->This Message
-    /about -> About TriBot
-    /contact -> Developer Info
+    Talk to me!
     
     """)
 
@@ -35,18 +31,18 @@ def error(update, context):
 
 def about(update, context):
     update.message.reply_text("""
-            TriganBot is not just a chatbot. It's so much more than that. It's an AI-enabled customer service solution that answers your questions, responds to your tweets, and helps you find the products you're looking for. TriganBot has the power to save you time, increase your sales, and make your customer service operation more efficient.
+           Talk to me to help Highstreet develop the next generation of NPCs.
         """)
 
 
 def contact(update, context):
-    update.message.reply_text("Developer: Sushanth Kurdekar \n email: sushanth@logicalbee.in\n")
+    update.message.reply_text("Developer: FomoDuck \n email: dev@highstreet.market\n")
 
 
 def handle_message(update, context):
     chat_log = session.get('chat_log')
-    answer = ask(update.message.text, chat_log)
-    session['chat_log'] = append_interaction_to_chat_log(update.message.text, answer,
+    answer = convo(update.message.text, chat_log)
+    session['chat_log'] = append_to_convo(update.message.text, answer,
                                                          chat_log)
     update.message.reply_text(f"{str(answer)}")
 
@@ -69,7 +65,7 @@ def main():
         listen="0.0.0.0",
         port=int(PORT),
         url_path=TOKEN,
-        webhook_url='https://web3taskbot.herokuapp.com/' + TOKEN
+        webhook_url='https://quackhead.herokuapp.com/' + TOKEN
     )
 
     updater.idle()
