@@ -1,9 +1,11 @@
 import telegram.ext
 from quackHeadBill import convo, append_to_convo
+from dotenv import load_dotenv
 import logging, os 
 PORT = int(os.environ.get('PORT', '8443'))
-
+load_dotenv()
 TOKEN = os.getenv("TELEGRAM_KEY")
+print(TOKEN)
 
 session = {}
 
