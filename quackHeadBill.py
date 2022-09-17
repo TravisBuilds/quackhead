@@ -1,13 +1,12 @@
 from devenv import load_dotenv
 from random import choice 
-from flask import flask, request 
 import os
 import openai
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-completion = oepnai.completion()
+completion = openai.completion()
 
 start_sequence = "\nQuackhead:"
 restart_sequence = "\nHuman:"
