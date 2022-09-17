@@ -64,7 +64,7 @@ def main():
         listen="0.0.0.0",
         port=int(PORT),
         url_path=TOKEN,
-        webhook_url='https://quackhead.herokuapp.com/' + TOKEN
+        webhook_url='https://quckhead.herokuapp.com/' + TOKEN
     )
 
     updater.idle()
