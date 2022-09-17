@@ -1,7 +1,6 @@
-from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+import telegram.ext
 from quackHeadBill import convo, append_to_convo
-import os 
+import logging, os 
 PORT = int(os.environ.get('PORT', '8443'))
 
 TOKEN = os.getenv("TELEGRAM_KEY")
